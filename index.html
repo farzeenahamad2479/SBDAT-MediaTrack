@@ -3,12 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sign In · MediaTrack</title>
+<title>MediaTrack — Every Story Leaves a Mark.</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <section class="auth-stage">
+  <!-- ============================================================
+       HERO — the introduction, not a login form
+       ============================================================ -->
+  <section class="hero" id="hero">
+
+    <div class="hero-bg" id="heroBg">
+      <!-- Drop the real collage in at assets/hero-bg.jpg — grayscale,
+           blur, dark overlay and the slow zoom are already wired up. -->
+      <img src="assets/hero-bg.jpg" alt="" data-fallback="#heroBg">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="logo-mark">
+        <!-- Drop the official mark in at assets/logo.png -->
+        <img src="assets/logo.png" alt="MediaTrack" data-fallback="#heroLogoFallback">
+        <div class="logo-fallback" id="heroLogoFallback" aria-hidden="true"></div>
+      </div>
+
+      <h1 class="hero-title">MediaTrack</h1>
+      <div class="title-rule" aria-hidden="true"></div>
+
+      <p class="hero-tagline">Every Story Leaves a Mark.</p>
+      <p class="hero-desc">Track every movie, every episode, every unforgettable journey.</p>
+
+      <button type="button" class="btn-ghost" data-begin-journey>Begin Your Journey</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LOGIN — revealed in place once the journey begins
+       ============================================================ -->
+  <section class="auth-stage is-embedded" id="authStage">
     <div class="auth-backdrop" id="authBackdrop">
       <img src="assets/hero-bg.jpg" alt="" data-fallback="#authBackdrop">
     </div>
@@ -55,7 +87,7 @@
 
       <p class="auth-footer">
         New to MediaTrack?
-        <a href="signup.html" data-nav>Create Account</a>
+        <a href="signup.html">Create Account</a>
       </p>
     </div>
   </section>

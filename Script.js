@@ -1,10 +1,43 @@
 /* ===================================================================
-   MediaTrack — Auth UI interactions
+   MediaTrack — interactions
    =================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- track input "has value" state for icon accent ---- */
+  /* -----------------------------------------------------------------
+     Graceful fallback for img1 (logo) / img2 (hero background):
+     if the real asset hasn't been placed at assets/logo.png or
+     assets/hero-bg.jpg yet, swap in the quiet CSS placeholder
+     instead of showing a broken image.
+     ----------------------------------------------------------------- */
+  document.querySelectorAll('img[data-fallback]').forEach(img => {
+    img.addEventListener('error', () => {
+      const fallback = document.querySelector(img.dataset.fallback);
+      img.style.display = 'none';
+      if (fallback) fallback.classList.add('is-fallback', 'show');
+    }, { once: true });
+  });
+
+  /* -----------------------------------------------------------------
+     Hero -> login cinematic reveal (index.html only)
+     ----------------------------------------------------------------- */
+  const beginBtn = document.querySelector('[data-begin-journey]');
+  if (beginBtn) {
+    const hero = document.querySelector('.hero');
+    const authStage = document.querySelector('.auth-stage.is-embedded');
+
+    beginBtn.addEventListener('click', () => {
+      hero.classList.add('is-leaving');
+      setTimeout(() => {
+        authStage.classList.add('is-visible');
+        authStage.querySelector('input')?.focus({ preventScroll: true });
+      }, 500);
+    });
+  }
+
+  /* -----------------------------------------------------------------
+     "has value" state, kept purely for potential future styling
+     ----------------------------------------------------------------- */
   document.querySelectorAll('.field').forEach(field => {
     const input = field.querySelector('input');
     if (!input) return;
@@ -14,19 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
     sync();
   });
 
-  /* ---- password visibility toggles ---- */
+  /* -----------------------------------------------------------------
+     Password visibility toggles
+     ----------------------------------------------------------------- */
   document.querySelectorAll('.field-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       const input = btn.parentElement.querySelector('input');
       if (!input) return;
       const isHidden = input.type === 'password';
       input.type = isHidden ? 'text' : 'password';
-      btn.classList.toggle('is-visible', isHidden);
       btn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
     });
   });
 
-  /* ---- button ripple + press feedback ---- */
+  /* -----------------------------------------------------------------
+     Button ripple (monochrome — no colour)
+     ----------------------------------------------------------------- */
   document.querySelectorAll('.btn-primary').forEach(btn => {
     btn.addEventListener('click', function (e) {
       const rect = btn.getBoundingClientRect();
@@ -41,9 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---- lightweight front-end-only validation ---- */
-  const form = document.querySelector('form[data-auth-form]');
-  if (form) {
+  /* -----------------------------------------------------------------
+     Front-end-only validation
+     ----------------------------------------------------------------- */
+  document.querySelectorAll('form[data-auth-form]').forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       let valid = true;
@@ -81,42 +118,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const btn = form.querySelector('.btn-primary');
       const originalLabel = btn.textContent;
-      btn.textContent = form.dataset.authForm === 'signup' ? 'Creating account…' : 'Signing in…';
+      btn.textContent = form.dataset.authForm === 'signup' ? 'Creating Account…' : 'Signing In…';
       btn.style.pointerEvents = 'none';
 
       setTimeout(() => {
-        btn.textContent = 'Success ✓';
+        btn.textContent = 'Welcome';
         setTimeout(() => {
           btn.textContent = originalLabel;
           btn.style.pointerEvents = '';
         }, 1200);
       }, 900);
     });
-  }
+  });
 
-  /* ---- smooth page transition on nav links ---- */
+  /* -----------------------------------------------------------------
+     Cinematic page-to-page transition (login.html <-> signup.html)
+     ----------------------------------------------------------------- */
   document.querySelectorAll('a[data-nav]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       if (!href) return;
       e.preventDefault();
       document.body.classList.add('leaving');
-      setTimeout(() => { window.location.href = href; }, 420);
+      setTimeout(() => { window.location.href = href; }, 380);
     });
   });
-
-  /* ---- subtle parallax on the floating background slabs ---- */
-  const slabs = document.querySelectorAll('.slab');
-  if (slabs.length && window.matchMedia('(pointer: fine)').matches) {
-    window.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5);
-      const y = (e.clientY / window.innerHeight - 0.5);
-      slabs.forEach((slab, i) => {
-        const depth = (i + 1) * 6;
-        slab.style.marginLeft = `${x * depth}px`;
-        slab.style.marginTop = `${y * depth}px`;
-      });
-    });
-  }
 
 });
