@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Log In · MediaTrack</title>
+<title>Sign Up · MediaTrack</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,9 +36,20 @@
         <p class="tagline">Track every story. Remember every journey.</p>
       </div>
 
-      <p class="form-title">Welcome back</p>
+      <p class="form-title">Create your account</p>
 
-      <form data-auth-form="login" novalidate>
+      <form data-auth-form="signup" novalidate>
+        <div>
+          <div class="field">
+            <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="8" r="3.5"/>
+              <path d="M4.5 20c1.2-3.8 4.3-6 7.5-6s6.3 2.2 7.5 6"/>
+            </svg>
+            <input type="text" name="username" placeholder="Username" autocomplete="username" required>
+          </div>
+          <p class="field-error" data-for="username"></p>
+        </div>
+
         <div>
           <div class="field">
             <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -56,7 +67,7 @@
               <rect x="4.5" y="10.5" width="15" height="10" rx="2"/>
               <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>
             </svg>
-            <input type="password" name="password" placeholder="Password" autocomplete="current-password" required>
+            <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
             <button type="button" class="field-toggle" aria-label="Show password">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/>
@@ -67,15 +78,24 @@
           <p class="field-error" data-for="password"></p>
         </div>
 
-        <div class="row-between">
-          <label class="remember">
-            <input type="checkbox" name="remember">
-            Remember me
-          </label>
-          <a href="#" class="link-muted">Forgot password?</a>
+        <div>
+          <div class="field">
+            <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="4.5" y="10.5" width="15" height="10" rx="2"/>
+              <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>
+            </svg>
+            <input type="password" name="confirmPassword" placeholder="Confirm password" autocomplete="new-password" required>
+            <button type="button" class="field-toggle" aria-label="Show password">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <p class="field-error" data-for="confirmPassword"></p>
         </div>
 
-        <button type="submit" class="btn-primary">Log In</button>
+        <button type="submit" class="btn-primary">Create Account</button>
       </form>
 
       <div class="divider">or continue with</div>
@@ -91,8 +111,8 @@
       </div>
 
       <p class="switch-text">
-        New to MediaTrack?
-        <a href="signup.html" data-nav>Sign Up</a>
+        Already have an account?
+        <a href="login.html" data-nav>Login</a>
       </p>
     </div>
   </main>
