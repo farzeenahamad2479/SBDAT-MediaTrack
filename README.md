@@ -1,5 +1,3 @@
-# SBDAT-MediaTrack
-A Personal Media Tracking Platform built using ShaktiDB.
 # 🎬 MediaTrack
 
 > **Every Story Leaves a Mark.**
@@ -55,4 +53,3 @@ This repository contains the source code, project progress, and documentation fo
 ---
 
 ### *"Track your journey. Preserve your stories."*
-
