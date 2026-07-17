@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home · MediaTrack</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="home.css">
+</head>
+<body class="home-body">
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav class="app-nav">
+    <div class="nav-brand">
+      <img src="assets/logo.png" alt="MediaTrack">
+      <span>MediaTrack</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html" class="is-active">Home</a></li>
+      <li><a href="#banners">Movies</a></li>
+      <li><a href="#banners">Series</a></li>
+      <li><a href="#banners">Anime</a></li>
+      <li><a href="#watchlist">Watchlist</a></li>
+    </ul>
+    <div class="nav-avatar" title="Your profile">U</div>
+  </nav>
+
+  <!-- ============================================================
+       WELCOME
+       ============================================================ -->
+  <header class="welcome">
+    <p class="welcome-eyebrow">Signed in as username</p>
+    <h1 class="welcome-title">Welcome back. Let's pick up the story.</h1>
+  </header>
+
+  <!-- ============================================================
+       FEATURED — upcoming releases
+       ============================================================ -->
+  <section class="featured-grid">
+    <article class="featured-card">
+      <img src="assets/posters/odyssey.jpg" alt="Odyssey">
+      <div class="featured-content">
+        <p class="featured-eyebrow">Coming Soon · Movie</p>
+        <h2 class="featured-title">Odyssey</h2>
+        <p class="featured-desc">A journey across myth and memory — the season's most anticipated epic arrives soon.</p>
+      </div>
+    </article>
+
+    <article class="featured-card">
+      <img src="assets/posters/spiderman.jpg" alt="Spider-Man">
+      <div class="featured-content">
+        <p class="featured-eyebrow">Coming Soon · Movie</p>
+        <h2 class="featured-title">Spider-Man</h2>
+        <p class="featured-desc">Behind the mask, the cost of every choice catches up with him.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============================================================
+       CINEMATIC BANNERS
+       ============================================================ -->
+  <section class="banners" id="banners">
+    <article class="banner">
+      <div class="banner-media"><img src="assets/posters/dune.jpg" alt="Dune"></div>
+      <div class="banner-overlay"></div>
+      <div class="banner-label"><span>Movies</span></div>
+    </article>
+
+    <article class="banner">
+      <div class="banner-media"><img src="assets/posters/breaking-bad.jpg" alt="Breaking Bad"></div>
+      <div class="banner-overlay"></div>
+      <div class="banner-label"><span>Series</span></div>
+    </article>
+
+    <article class="banner">
+      <div class="banner-media"><img src="assets/posters/one-piece.jpg" alt="One Piece"></div>
+      <div class="banner-overlay"></div>
+      <div class="banner-label"><span>Anime</span></div>
+    </article>
+
+    <article class="banner">
+      <div class="banner-media"><img src="assets/posters/chernobyl.jpg" alt="Chernobyl"></div>
+      <div class="banner-overlay"></div>
+      <div class="banner-label"><span>Mini Series</span></div>
+    </article>
+  </section>
+
+  <!-- ============================================================
+       CONTINUE WATCHING
+       ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <h3 class="section-title">Continue Watching</h3>
+      <span class="section-sub">Pick up where you left off</span>
+    </div>
+
+    <div class="watch-grid">
+      <article class="watch-card" style="--progress: 57%;">
+        <img src="assets/posters/dune.jpg" alt="Dune Part One">
+        <div class="watch-info">
+          <div class="watch-meta">
+            <span class="watch-title">Dune: Part One</span>
+            <span class="watch-time">1h 28m watched</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+          <button class="resume-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg>
+            Resume
+          </button>
+        </div>
+      </article>
+
+      <article class="watch-card" style="--progress: 42%;">
+        <!-- No poster supplied for LOST yet — add assets/posters/lost.jpg to replace this placeholder -->
+        <img src="assets/posters/lost.jpg" alt="LOST">
+        <div class="watch-info">
+          <div class="watch-meta">
+            <span class="watch-title">LOST — S02E08</span>
+            <span class="watch-time">18m remaining</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+          <button class="resume-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg>
+            Resume
+          </button>
+        </div>
+      </article>
+
+      <article class="watch-card" style="--progress: 80%;">
+        <img src="assets/posters/one-piece.jpg" alt="One Piece EP656">
+        <div class="watch-info">
+          <div class="watch-meta">
+            <span class="watch-title">One Piece — EP656</span>
+            <span class="watch-time">5m remaining</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+          <button class="resume-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg>
+            Resume
+          </button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRENDING
+       ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <h3 class="section-title">Trending</h3>
+      <span class="section-sub">What everyone's watching this week</span>
+    </div>
+    <div class="row-track" id="trendingRow"></div>
+  </section>
+
+  <!-- ============================================================
+       UPCOMING RELEASES
+       ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <h3 class="section-title">Upcoming Releases</h3>
+      <span class="section-sub">On your radar</span>
+    </div>
+    <div class="row-track" id="upcomingRow"></div>
+  </section>
+
+  <!-- ============================================================
+       TOP PICKS
+       ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <h3 class="section-title">Top Picks For You</h3>
+      <span class="section-sub">Curated from your history</span>
+    </div>
+    <div class="row-track" id="topPicksRow"></div>
+  </section>
+
+  <!-- ============================================================
+       DAILY FILM QUIZ
+       ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <h3 class="section-title">Daily Film Quiz</h3>
+      <span class="section-sub">One frame a day</span>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-visual">
+        <img src="assets/posters/dune.jpg" alt="Mystery still">
+      </div>
+      <div class="quiz-body">
+        <p class="quiz-question">Guess Today's Title</p>
+        <h4 class="quiz-title">A desert. Two figures. One rising sun.</h4>
+        <div class="quiz-options">
+          <button class="quiz-option" type="button" data-answer="Chernobyl">Chernobyl</button>
+          <button class="quiz-option" type="button" data-answer="Dune">Dune</button>
+          <button class="quiz-option" type="button" data-answer="Breaking Bad">Breaking Bad</button>
+          <button class="quiz-option" type="button" data-answer="One Piece">One Piece</button>
+        </div>
+        <p class="quiz-result"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RANDOM PICK FROM WATCHLIST
+       ============================================================ -->
+  <section class="section" id="watchlist">
+    <div class="section-head">
+      <h3 class="section-title">Random Pick From Watchlist</h3>
+      <span class="section-sub">Can't decide? Let fate choose</span>
+    </div>
+
+    <div class="watchlist-card">
+      <div class="watchlist-info">
+        <p class="watchlist-label">Tonight, you're watching</p>
+        <p class="watchlist-pick">Dune — Part Two</p>
+      </div>
+      <button class="shuffle-btn" type="button">Shuffle</button>
+    </div>
+  </section>
+
+  <footer class="home-footer">MediaTrack — Every Story Leaves a Mark.</footer>
+
+  <script src="home.js"></script>
+</body>
+</html>
