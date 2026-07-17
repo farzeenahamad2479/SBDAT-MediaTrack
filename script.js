@@ -78,7 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* -----------------------------------------------------------------
-     Front-end-only validation
+     Front-end-only validation + temporary demo authentication
+     (username: "username", password: "1234" — no backend, per spec)
      ----------------------------------------------------------------- */
   document.querySelectorAll('form[data-auth-form]').forEach(form => {
     form.addEventListener('submit', (e) => {
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
           message = 'This field is required.';
         } else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
           message = 'Enter a valid email address.';
-        } else if (input.name === 'password' && input.value.length < 6) {
+        } else if (input.name === 'password' && input.value.length < 6 && form.dataset.authForm === 'signup') {
           message = 'Use at least 6 characters.';
         } else if (input.name === 'confirmPassword') {
           const pass = form.querySelector('input[name="password"]');
@@ -118,11 +119,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const btn = form.querySelector('.btn-primary');
       const originalLabel = btn.textContent;
-      btn.textContent = form.dataset.authForm === 'signup' ? 'Creating Account…' : 'Signing In…';
+
+      /* ---- login form: check against the temporary demo credentials ---- */
+      if (form.dataset.authForm === 'login') {
+        const username = form.querySelector('input[name="username"]').value.trim();
+        const password = form.querySelector('input[name="password"]').value;
+        const passwordError = form.querySelector('.field-error[data-for="password"]');
+
+        if (username.toLowerCase() !== 'username' || password !== '1234') {
+          passwordError.textContent = 'Incorrect username or password.';
+          passwordError.classList.add('show');
+          form.querySelector('input[name="password"]').focus();
+          return;
+        }
+        if (passwordError) passwordError.classList.remove('show');
+
+        btn.textContent = 'Signing In…';
+        btn.style.pointerEvents = 'none';
+        setTimeout(() => {
+          btn.textContent = 'Welcome';
+          document.body.classList.add('leaving');
+          setTimeout(() => { window.location.href = 'home.html'; }, 380);
+        }, 700);
+        return;
+      }
+
+      /* ---- signup form: front-end-only simulated success ---- */
+      btn.textContent = 'Creating Account…';
       btn.style.pointerEvents = 'none';
 
       setTimeout(() => {
-        btn.textContent = 'Welcome';
+        btn.textContent = 'Success ✓';
         setTimeout(() => {
           btn.textContent = originalLabel;
           btn.style.pointerEvents = '';

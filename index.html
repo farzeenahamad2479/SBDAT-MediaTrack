@@ -53,13 +53,14 @@
         </div>
         <h2 class="auth-name">MediaTrack</h2>
         <p class="auth-title">Sign In To Continue</p>
+        <p class="auth-hint">Demo access — username: <strong>username</strong> · password: <strong>1234</strong></p>
       </div>
 
       <form data-auth-form="login" novalidate>
         <div class="field">
-          <label for="loginEmail">Email</label>
-          <input id="loginEmail" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-          <p class="field-error" data-for="email"></p>
+          <label for="loginUsername">Username</label>
+          <input id="loginUsername" type="text" name="username" placeholder="Enter your username" autocomplete="username" required>
+          <p class="field-error" data-for="username"></p>
         </div>
 
         <div class="field">
