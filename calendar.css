@@ -1,0 +1,245 @@
+/* ===================================================================
+   MediaTrack — "Coming This Month" Calendar
+   Loaded after style.css: reuses its :root tokens (--bg, --text, etc.)
+   =================================================================== */
+
+body.calendar-body{
+  background: var(--bg);
+}
+
+/* ===================================================================
+   Header
+   =================================================================== */
+
+.calendar-header{
+  padding: 64px 48px 16px;
+  opacity:0;
+  transform: translateY(14px);
+  animation: calFadeUp 1s var(--ease) 0.2s forwards;
+  max-width: 640px;
+}
+
+.calendar-eyebrow{
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+.calendar-title{
+  font-family: var(--f-display);
+  font-size: clamp(30px, 3.6vw, 46px);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-bottom: 14px;
+}
+.calendar-subtitle{
+  font-size: 14.5px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+@keyframes calFadeUp{ to{ opacity:1; transform: translateY(0); } }
+
+/* ===================================================================
+   Timeline
+   =================================================================== */
+
+.timeline{
+  padding: 24px 48px 80px;
+  max-width: 880px;
+}
+
+.date-block{
+  margin-bottom: 8px;
+}
+
+.date-divider{
+  display:flex;
+  align-items:center;
+  gap: 20px;
+  margin: 56px 0 26px;
+}
+.date-block:first-child .date-divider{ margin-top: 8px; }
+
+.date-divider::before{
+  content:"";
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--border-strong);
+}
+.date-divider::after{
+  content:"";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-strong), transparent);
+}
+
+.date-heading{
+  font-family: var(--f-display);
+  font-size: clamp(20px, 2.4vw, 27px);
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.date-cards{
+  display:flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===================================================================
+   Release card
+   =================================================================== */
+
+.release-card{
+  display:grid;
+  grid-template-columns: 130px 1fr;
+  gap: 26px;
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(22,22,22,0.5);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  cursor: default;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+.release-card.in-view{
+  animation: calFadeUp 0.8s var(--ease) forwards;
+}
+.release-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  background: rgba(26,26,26,0.62);
+  box-shadow: 0 20px 44px -20px rgba(0,0,0,0.6);
+}
+
+.release-poster{
+  position:relative;
+  aspect-ratio: 2/3;
+  border-radius: 10px;
+  overflow:hidden;
+  background: #050505;
+  border: 1px solid var(--border);
+}
+.release-poster img{
+  width:100%; height:100%;
+  object-fit: contain;
+  background: #050505;
+  transform: scale(1);
+  transition: transform 0.5s var(--ease);
+}
+.release-card:hover .release-poster img{ transform: scale(1.05); }
+
+.release-poster.is-placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    repeating-linear-gradient(115deg, #161616 0px, #161616 2px, #101010 2px, #101010 4px);
+}
+.release-poster.is-placeholder .placeholder-icon{
+  font-size: 26px;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.release-info{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.release-title{
+  font-family: var(--f-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height:1.3;
+}
+.release-season{
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-faint);
+  margin-top: -4px;
+}
+
+.release-meta{
+  display:flex;
+  flex-wrap: wrap;
+  align-items:center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.meta-pill{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  color: var(--text-dim);
+}
+.meta-pill .icon{
+  filter: grayscale(1);
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.meta-item{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 300;
+  color: var(--text-faint);
+}
+.meta-item .icon{
+  filter: grayscale(1);
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* ===================================================================
+   Responsive
+   =================================================================== */
+
+@media (max-width: 1080px){
+  .timeline{ max-width: 100%; }
+}
+
+@media (max-width: 720px){
+  .calendar-header{ padding: 48px 20px 8px; }
+  .timeline{ padding: 16px 20px 60px; }
+  .date-divider{ margin: 44px 0 20px; gap: 14px; }
+  .date-divider::before{ flex-basis: 18px; }
+
+  .release-card{
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px;
+  }
+  .release-poster{
+    max-width: 160px;
+    margin: 0 auto;
+  }
+  .release-info{ text-align:center; align-items:center; }
+  .release-meta{ justify-content:center; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .release-card{ opacity:1 !important; transform:none !important; animation:none !important; }
+}
