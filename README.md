@@ -49,6 +49,14 @@ Instead of simply recording watched titles, MediaTrack helps users build a lasti
 
 ---
 
+## 🎨 Design Philosophy
+
+MediaTrack is designed with a **cinematic-first approach**, where the interface feels immersive rather than overwhelming. Inspired by modern streaming platforms, the application emphasizes large visual banners, smooth scrolling interactions, minimal layouts, and elegant animations to create an enjoyable browsing experience.
+
+Instead of presenting users with a traditional dashboard, MediaTrack aims to tell a visual story through its interface, making every visit feel like exploring a personal entertainment gallery.
+
+---
+
 ## 🛠 Tech Stack
 
 ### Frontend
@@ -93,7 +101,7 @@ Instead of simply recording watched titles, MediaTrack helps users build a lasti
 
 > **Currently under active development.**
 
-MediaTrack is continuously evolving with new features, UI improvements, and backend functionality being added over time.
+Current development focuses on building the frontend experience, including the authentication flow, cinematic landing page, immersive scrolling interactions, and responsive layouts. Backend integration with ShaktiDB will be introduced in the next phase of development.
 
 ---
 
