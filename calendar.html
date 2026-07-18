@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming This Month · MediaTrack</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="calendar.css">
+</head>
+<body class="calendar-body">
+
+  <!-- ============================================================
+       NAV — identical to home.html, "Calendar" marked active
+       ============================================================ -->
+  <nav class="app-nav">
+    <div class="nav-brand">
+      <img src="assets/logo.png" alt="MediaTrack">
+      <span>MediaTrack</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="home.html#banners">Movies</a></li>
+      <li><a href="home.html#banners">Series</a></li>
+      <li><a href="home.html#banners">Anime</a></li>
+      <li><a href="calendar.html" class="is-active">Calendar</a></li>
+      <li><a href="home.html#watchlist">Watchlist</a></li>
+    </ul>
+    <div class="nav-avatar" title="Your profile">U</div>
+  </nav>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="calendar-header">
+    <p class="calendar-eyebrow">Release Calendar</p>
+    <h1 class="calendar-title">Coming This Month</h1>
+    <p class="calendar-subtitle">Discover everything releasing this month across movies, TV series, anime and streaming platforms.</p>
+  </header>
+
+  <!-- ============================================================
+       TIMELINE — rendered entirely from calendar.js's RELEASES array
+       ============================================================ -->
+  <main class="timeline" id="timeline"></main>
+
+  <footer class="home-footer">MediaTrack — Every Story Leaves a Mark.</footer>
+
+  <script src="calendar.js"></script>
+</body>
+</html>

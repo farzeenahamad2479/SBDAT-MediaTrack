@@ -23,6 +23,17 @@ const WATCHLIST = [
   'The Odyssey',
 ];
 
+/* Upcoming Releases carousel — separate from POSTERS since these are
+   full vertical posters (object-fit: contain) rather than landscape
+   thumbnails. Add more titles here any time. */
+const UPCOMING_CAROUSEL = [
+  { title: 'Dune: Part Three',      year: '2026',           src: 'assets/posters/carousel/dune-messiah.jpg' },
+  { title: 'Spider-Man: Brand New Day', year: 'July 31, 2026', src: 'assets/posters/carousel/spiderman.jpg' },
+  { title: 'Digger',                year: 'October 2, 2026', src: 'assets/posters/carousel/digger.jpg' },
+  { title: 'Bleach: Thousand-Year Blood War — Final Cour', year: 'July 25, 2026', src: 'assets/posters/carousel/bleach.jpg' },
+  { title: 'Avengers: Doomsday',    year: '2026',           src: 'assets/posters/carousel/avengers-doomsday.jpg' },
+];
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* -----------------------------------------------------------------
@@ -30,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ----------------------------------------------------------------- */
   const handleImgFallback = (img) => {
     img.addEventListener('error', () => {
-      const card = img.closest('.watch-card, .poster-card, .featured-card, .banner, .quiz-visual');
+      const card = img.closest('.watch-card, .poster-card, .carousel-card, .now-showing-poster, .banner, .quiz-visual');
       if (card) card.classList.add('is-placeholder');
       img.style.display = 'none';
     }, { once: true });
@@ -47,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'poster-card';
       card.innerHTML = `
-        <img src="${item.src}" alt="${item.title}">
+        <img src="${item.src}" alt="${item.title}" loading="lazy" decoding="async">
         <span class="poster-name">${item.title}</span>
       `;
       track.appendChild(card);
@@ -55,11 +66,33 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   buildRow('trendingRow', POSTERS);
-  buildRow('upcomingRow', POSTERS.filter(p => p.category === 'Coming Soon').concat(POSTERS.slice(0, 3)));
   buildRow('topPicksRow', [...POSTERS].reverse());
 
+  /* Upcoming Releases — vertical poster carousel, object-fit: contain,
+     title + year printed underneath rather than an overlay */
+  const buildCarousel = (containerId, items) => {
+    const track = document.getElementById(containerId);
+    if (!track) return;
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'carousel-card';
+      card.innerHTML = `
+        <div class="carousel-poster">
+          <img src="${item.src}" alt="${item.title}" loading="lazy" decoding="async">
+        </div>
+        <div class="carousel-meta">
+          <p class="carousel-title">${item.title}</p>
+          <p class="carousel-year">${item.year}</p>
+        </div>
+      `;
+      track.appendChild(card);
+    });
+  };
+
+  buildCarousel('upcomingCarousel', UPCOMING_CAROUSEL);
+
   // re-attach fallback handling for the freshly injected images
-  document.querySelectorAll('.poster-card img').forEach(handleImgFallback);
+  document.querySelectorAll('.poster-card img, .carousel-poster img').forEach(handleImgFallback);
 
   /* -----------------------------------------------------------------
      Scroll-triggered fade/scale reveals

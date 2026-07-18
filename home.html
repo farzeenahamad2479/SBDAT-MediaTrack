@@ -6,6 +6,7 @@
 <title>Home · MediaTrack</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="home.css">
+<link rel="preload" as="image" href="assets/posters/odyssey.jpg" fetchpriority="high">
 </head>
 <body class="home-body">
 
@@ -22,6 +23,7 @@
       <li><a href="#banners">Movies</a></li>
       <li><a href="#banners">Series</a></li>
       <li><a href="#banners">Anime</a></li>
+      <li><a href="calendar.html">Calendar</a></li>
       <li><a href="#watchlist">Watchlist</a></li>
     </ul>
     <div class="nav-avatar" title="Your profile">U</div>
@@ -36,26 +38,20 @@
   </header>
 
   <!-- ============================================================
-       FEATURED — upcoming releases
+       NOW IN THEATERS — the official poster, never cropped
        ============================================================ -->
-  <section class="featured-grid">
-    <article class="featured-card">
-      <img src="assets/posters/odyssey.jpg" alt="Odyssey">
-      <div class="featured-content">
-        <p class="featured-eyebrow">Coming Soon · Movie</p>
-        <h2 class="featured-title">Odyssey</h2>
-        <p class="featured-desc">A journey across myth and memory — the season's most anticipated epic arrives soon.</p>
+  <section class="now-showing">
+    <div class="now-showing-card">
+      <div class="now-showing-poster">
+        <img src="assets/posters/odyssey.jpg" alt="The Odyssey — official poster" fetchpriority="high" decoding="async">
       </div>
-    </article>
-
-    <article class="featured-card">
-      <img src="assets/posters/spiderman.jpg" alt="Spider-Man">
-      <div class="featured-content">
-        <p class="featured-eyebrow">Coming Soon · Movie</p>
-        <h2 class="featured-title">Spider-Man</h2>
-        <p class="featured-desc">Behind the mask, the cost of every choice catches up with him.</p>
+      <div class="now-showing-body">
+        <p class="now-showing-eyebrow">Now In Theaters</p>
+        <h2 class="now-showing-title">The Odyssey</h2>
+        <span class="now-showing-tag">Now Showing</span>
+        <button class="now-showing-btn" type="button">Explore <span aria-hidden="true">→</span></button>
       </div>
-    </article>
+    </div>
   </section>
 
   <!-- ============================================================
@@ -63,25 +59,25 @@
        ============================================================ -->
   <section class="banners" id="banners">
     <article class="banner">
-      <div class="banner-media"><img src="assets/posters/dune.jpg" alt="Dune"></div>
+      <div class="banner-media"><img src="assets/posters/dune.jpg" alt="Dune" loading="lazy" decoding="async"></div>
       <div class="banner-overlay"></div>
       <div class="banner-label"><span>Movies</span></div>
     </article>
 
     <article class="banner">
-      <div class="banner-media"><img src="assets/posters/breaking-bad.jpg" alt="Breaking Bad"></div>
+      <div class="banner-media"><img src="assets/posters/breaking-bad.jpg" alt="Breaking Bad" loading="lazy" decoding="async"></div>
       <div class="banner-overlay"></div>
       <div class="banner-label"><span>Series</span></div>
     </article>
 
     <article class="banner">
-      <div class="banner-media"><img src="assets/posters/one-piece.jpg" alt="One Piece"></div>
+      <div class="banner-media"><img src="assets/posters/one-piece.jpg" alt="One Piece" loading="lazy" decoding="async"></div>
       <div class="banner-overlay"></div>
       <div class="banner-label"><span>Anime</span></div>
     </article>
 
     <article class="banner">
-      <div class="banner-media"><img src="assets/posters/chernobyl.jpg" alt="Chernobyl"></div>
+      <div class="banner-media"><img src="assets/posters/chernobyl.jpg" alt="Chernobyl" loading="lazy" decoding="async"></div>
       <div class="banner-overlay"></div>
       <div class="banner-label"><span>Mini Series</span></div>
     </article>
@@ -157,14 +153,14 @@
   </section>
 
   <!-- ============================================================
-       UPCOMING RELEASES
+       UPCOMING RELEASES — premium vertical poster carousel
        ============================================================ -->
   <section class="section">
     <div class="section-head">
       <h3 class="section-title">Upcoming Releases</h3>
       <span class="section-sub">On your radar</span>
     </div>
-    <div class="row-track" id="upcomingRow"></div>
+    <div class="carousel-track" id="upcomingCarousel"></div>
   </section>
 
   <!-- ============================================================
