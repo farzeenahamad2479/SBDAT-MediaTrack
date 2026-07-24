@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account · MediaTrack</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<section class="auth-stage">
+
+  <div class="auth-backdrop" id="authBackdrop">
+    <img src="../assets/hero-bg.jpg" alt="" data-fallback="#authBackdrop">
+  </div>
+
+  <div class="auth-card">
+
+    <div class="auth-brand">
+      <div class="logo-mark auth-logo">
+        <img src="../assets/logo.png" alt="MediaTrack" data-fallback="#authLogoFallback">
+        <div class="logo-fallback" id="authLogoFallback" aria-hidden="true"></div>
+      </div>
+
+      <h2 class="auth-name">MediaTrack</h2>
+
+      <p class="auth-title">Begin Your Archive</p>
+    </div>
+
+    <form data-auth-form="signup" novalidate>
+
+      <div class="field">
+        <label for="signupName">Full Name</label>
+
+        <input
+          id="signupName"
+          type="text"
+          name="name"
+          placeholder="Enter your full name"
+          autocomplete="name"
+          required
+        >
+
+        <p class="field-error" data-for="name"></p>
+      </div>
+
+      <div class="field">
+        <label for="signupUsername">Username</label>
+
+        <input
+          id="signupUsername"
+          type="text"
+          name="username"
+          placeholder="Choose a username"
+          autocomplete="username"
+          required
+        >
+
+        <p class="field-error" data-for="username"></p>
+      </div>
+
+      <div class="field">
+        <label for="signupEmail">Email</label>
+
+        <input
+          id="signupEmail"
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        >
+
+        <p class="field-error" data-for="email"></p>
+      </div>
+
+      <div class="field">
+
+        <label for="signupPassword">Password</label>
+
+        <input
+          id="signupPassword"
+          type="password"
+          name="password"
+          placeholder="••••••••"
+          autocomplete="new-password"
+          required
+        >
+
+        <button
+          type="button"
+          class="field-toggle"
+          aria-label="Show password"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+
+        <p class="field-error" data-for="password"></p>
+
+      </div>
+
+      <div class="field">
+
+        <label for="signupConfirm">Confirm Password</label>
+
+        <input
+          id="signupConfirm"
+          type="password"
+          name="confirmPassword"
+          placeholder="••••••••"
+          autocomplete="new-password"
+          required
+        >
+
+        <button
+          type="button"
+          class="field-toggle"
+          aria-label="Show password"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+
+        <p class="field-error" data-for="confirmPassword"></p>
+
+      </div>
+
+      <button type="submit" class="btn-primary">
+        Create Account
+      </button>
+
+    </form>
+
+    <p class="auth-footer">
+      Already have an account?
+      <a href="login.html" data-nav>Sign In</a>
+    </p>
+
+  </div>
+
+</section>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
