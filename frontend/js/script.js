@@ -129,6 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
 
       e.preventDefault();
+      form.querySelectorAll(".field-error").forEach(error => {
+        error.textContent = "";
+        error.classList.remove("show");
+      });
 
       let valid = true;
       let firstBadInput = null;
@@ -204,105 +208,184 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const original = btn.textContent;
 
-      /* ============================================================
-         LOGIN
-         ============================================================ */
+    /* ============================================================
+   LOGIN
+   ============================================================ */
 
-      if (form.dataset.authForm === 'login') {
+if (form.dataset.authForm === 'login') {
 
-        const identifier =
-          form.querySelector('input[name="identifier"]').value.trim();
+    const identifier =
+        form.querySelector('input[name="identifier"]').value.trim();
 
-        const password =
-          form.querySelector('input[name="password"]').value;
+    const password =
+        form.querySelector('input[name="password"]').value;
 
-        const passwordError =
-          form.querySelector('.field-error[data-for="password"]');
+    const passwordError =
+        form.querySelector('.field-error[data-for="password"]');
 
-        const validUser =
+    btn.textContent = "Signing In...";
+    btn.style.pointerEvents = "none";
 
-          identifier.toLowerCase() === 'demo' ||
+    fetch("http://localhost:5000/api/auth/login", {
 
-          identifier.toLowerCase() === 'demo@mediatrack.com';
+        method: "POST",
 
-        if (!validUser || password !== '1234') {
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-          if (passwordError) {
+        body: JSON.stringify({
+            identifier,
+            password
+        })
 
-            passwordError.textContent =
-              'Incorrect email/username or password.';
+    })
 
-            passwordError.classList.add('show');
+    .then(res => res.json())
 
-          }
+    .then(data => {
 
-          form.querySelector(
-            'input[name="password"]'
-          ).focus();
+        if (data.success) {
 
-          return;
+            if (passwordError) {
+
+                passwordError.textContent = "";
+                passwordError.classList.remove("show");
+
+            }
+
+            btn.textContent = "Welcome";
+
+            document.body.classList.add("leaving");
+
+            setTimeout(() => {
+
+                window.location.href = "home.html";
+
+            }, 380);
+
+        } else {
+
+            btn.textContent = "Sign In";
+            btn.style.pointerEvents = "auto";
+
+            if (passwordError) {
+
+                passwordError.textContent = data.message;
+                passwordError.classList.add("show");
+
+            }
 
         }
+
+    })
+
+    .catch(err => {
+
+        console.error(err);
+
+        btn.textContent = "Sign In";
+        btn.style.pointerEvents = "auto";
 
         if (passwordError) {
 
-          passwordError.textContent = '';
+            passwordError.textContent =
+                "Unable to connect to the server.";
 
-          passwordError.classList.remove('show');
+            passwordError.classList.add("show");
 
         }
 
-        btn.textContent = 'Signing In...';
+    });
 
-        btn.style.pointerEvents = 'none';
+    return;
 
-        setTimeout(() => {
-
-          btn.textContent = 'Welcome';
-
-          document.body.classList.add('leaving');
-
-          setTimeout(() => {
-
-            window.location.href = 'home.html';
-
-          }, 380);
-
-        }, 700);
-
-        return;
-
-      }
+}
 
       /* ============================================================
-         SIGNUP
-         ============================================================ */
+   SIGNUP
+   ============================================================ */
 
-      btn.textContent = 'Creating Account...';
+      btn.textContent = "Creating Account...";
+      btn.style.pointerEvents = "none";
 
-      btn.style.pointerEvents = 'none';
+      const userData = {
+        full_name: form.querySelector('input[name="name"]').value.trim(),
+        username: form.querySelector('input[name="username"]').value.trim(),
+        email: form.querySelector('input[name="email"]').value.trim(),
+        password: form.querySelector('input[name="password"]').value
+      };
 
-      setTimeout(() => {
+      fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userData)
+      })
+        .then(res => res.json())
+        .then(data => {
 
-        btn.textContent = 'Account Created ✓';
+          if (data.success) {
 
-        setTimeout(() => {
+            btn.textContent = "Account Created ✓";
 
-          document.body.classList.add('leaving');
+            setTimeout(() => {
 
-          setTimeout(() => {
+              document.body.classList.add("leaving");
 
-            window.location.href = 'login.html';
+              setTimeout(() => {
 
-          }, 380);
+                window.location.href = "index.html";
 
-        }, 900);
+              }, 380);
 
-      }, 900);
+            }, 900);
 
+          } else {
+
+            btn.textContent = "Create Account";
+            btn.style.pointerEvents = "auto";
+
+            const error = form.querySelector(
+              `.field-error[data-for="${data.field}"]`
+            );
+
+            if (error) {
+
+              error.textContent = data.message;
+              error.classList.add("show");
+
+            }
+
+          }
+
+        })
+        .catch(err => {
+
+          console.error(err);
+
+          btn.textContent = "Create Account";
+          btn.style.pointerEvents = "auto";
+
+          const emailError = form.querySelector(
+            '.field-error[data-for="email"]'
+          );
+
+          if (emailError) {
+
+            emailError.textContent =
+              "Unable to connect to the server.";
+
+            emailError.classList.add("show");
+
+          }
+
+        });
     });
 
   });
+
 
   /* -----------------------------------------------------------------
      Smooth page transitions
