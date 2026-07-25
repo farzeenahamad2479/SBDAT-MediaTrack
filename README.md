@@ -1,119 +1,190 @@
 # 🎬 MediaTrack
 
-> **Track Your Journey. Preserve Your Stories.**
+> **Every Story Leaves a Mark.**
 
-MediaTrack is a personal entertainment tracking platform designed for movie lovers, binge-watchers, and anime fans. It allows users to organize their entertainment journey by keeping track of what they're watching, what they've finished, and what they plan to watch next.
+MediaTrack is a personal entertainment tracking platform that helps users organize, track, and rediscover their entertainment journey across **Movies, TV Series, Anime, and Books**.
 
-Unlike traditional media databases, MediaTrack focuses on creating a personalized experience. From tracking episode progress to showcasing favorite movies, directors, characters, and yearly viewing statistics, the platform is built to become your digital entertainment diary.
+Built as part of the **S-BDAT (Shakti-Based Database Application Training)** Mini Project, MediaTrack combines a cinematic user experience with the power of **ShaktiDB** to create a modern, database-driven media archive.
 
 ---
 
-## ✨ Features
+## ✨ Current Features
 
-### 🎥 Personal Media Tracking
-- Track Movies, TV Series, Anime, and Books
+### 🔐 Authentication
+- User Registration
+- User Login
+- Real-time Username & Email Validation
+- Database-backed Authentication
+- Inline Form Validation
+- Responsive Authentication UI
+
+### 🎨 Cinematic User Interface
+- Interactive Landing Page
+- Smooth Page Transitions
+- Modern Dark Theme
+- Responsive Layout
+- Animated Login Experience
+
+### 🗄 Database Integration
+- ShaktiDB Integration
+- Express.js Backend
+- PostgreSQL-Compatible Queries
+- Persistent User Storage
+
+---
+
+## 🚀 Planned Features
+
+### 🎥 Media Management
+- Add Movies, TV Series, Anime & Books
 - Continue Watching Progress
-- Resume Movies from Saved Timestamps
-- Organize Custom Watchlists
-- Mark Favorites
-- Rate and Review Titles
+- Episode Tracking
+- Reading Progress
+- Custom Watchlists
+- Favorites
+- Ratings & Reviews
 
-### 👤 Personalized Profiles
+### 👤 User Profile
+- Personal Bio
+- Profile Picture
 - Top 5 Movies
 - Top 5 Series
 - Top 5 Anime
-- Favorite Directors
 - Favorite Actors
+- Favorite Directors
 - Favorite Characters
-- Favorite Books
-- Personal Viewing Statistics
 
-### 📊 Insights & Discovery
-- Watch History
+### 📊 Analytics
 - Viewing Statistics
-- Yearly Rankings
-- Daily Film Quiz
-- Random "Pick From My Watchlist"
+- Recently Watched
+- Yearly Wrapped
+- Monthly Insights
+- Genre Breakdown
+- Watch History
+
+### 🔍 Discovery
+- Smart Search
+- Advanced Filters
+- Trending Titles
 - Upcoming Releases
-- Trending Content
+- Random Watchlist Picker
+- Personalized Recommendations
 
 ---
 
-## 🚀 Vision
+# 🏗 Project Architecture
 
-MediaTrack is built around one simple idea:
-
-> **Every story you experience becomes part of your own story.**
-
-Instead of simply recording watched titles, MediaTrack helps users build a lasting archive of their entertainment journey, making it easy to remember where they left off, revisit favorites, discover new content, and celebrate the stories that shaped them.
+```
+Frontend (HTML • CSS • JavaScript)
+            │
+            ▼
+      Express.js Backend
+            │
+            ▼
+         ShaktiDB
+            │
+            ▼
+     User Authentication
+```
 
 ---
 
-## 🎨 Design Philosophy
-
-MediaTrack is designed with a **cinematic-first approach**, where the interface feels immersive rather than overwhelming. Inspired by modern streaming platforms, the application emphasizes large visual banners, smooth scrolling interactions, minimal layouts, and elegant animations to create an enjoyable browsing experience.
-
-Instead of presenting users with a traditional dashboard, MediaTrack aims to tell a visual story through its interface, making every visit feel like exploring a personal entertainment gallery.
-
----
-
-## 🛠 Tech Stack
+# 🛠 Tech Stack
 
 ### Frontend
 - HTML5
 - CSS3
-- JavaScript
+- JavaScript (ES6)
+
+### Backend
+- Node.js
+- Express.js
 
 ### Database
 - ShaktiDB
+- PostgreSQL Driver (`pg`)
 
-### Version Control
+### Development Tools
 - Git
 - GitHub
+- VS Code
 
 ---
 
-## 📌 Planned Features
+# 📂 Project Structure
 
-- 🔐 User Authentication
-- 🎬 Continue Watching Dashboard
-- 📚 Smart Watchlists
-- 🎲 "Pick Something to Watch"
-- 📊 MediaTrack Wrapped (Year in Review)
-- 🏆 Achievement System
-- 📅 Release Calendar
-- 🔍 Advanced Search & Filters
-- 📱 Responsive Design
-- 🌙 Dark & Light Themes
-
----
-
-## 🎯 Project Goals
-
-- Create a clean and intuitive entertainment tracking platform.
-- Help users organize their complete media journey.
-- Showcase the capabilities of ShaktiDB through a practical real-world application.
-- Deliver a modern and cinematic user experience.
-
----
-
-## 🚧 Project Status
-
-> **Currently under active development.**
-
-Current development focuses on building the frontend experience, including the authentication flow, cinematic landing page, immersive scrolling interactions, and responsive layouts. Backend integration with ShaktiDB will be introduced in the next phase of development.
+```
+MediaTrack/
+│
+├── frontend/
+│   ├── assets/
+│   ├── css/
+│   ├── js/
+│   └── pages/
+│
+├── backend/
+│   ├── controllers/
+│   ├── routes/
+│   ├── db.js
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
+```
 
 ---
 
-## 🤝 Contributors
+# 🎯 Project Goals
 
-Developed as part of the **S-BDAT (Shakti-Based Database Application Training)** Mini Project.
-
-Contributions, suggestions, and feedback are always welcome.
+- Build a modern entertainment tracking platform.
+- Showcase practical database development using ShaktiDB.
+- Deliver a smooth and cinematic user experience.
+- Apply full-stack web development concepts in a real-world project.
 
 ---
 
-## 📄 License
+# 🚧 Current Progress
+
+## ✅ Completed
+
+- Cinematic Landing Page
+- User Registration
+- User Login
+- Express Backend
+- ShaktiDB Integration
+- Authentication API
+- Form Validation
+- Responsive Authentication UI
+
+## 🔄 In Progress
+
+- Secure Password Encryption
+- User Sessions
+- Profile Management
+
+## 📅 Upcoming
+
+- Media Library
+- Watchlists
+- Ratings & Reviews
+- Continue Watching
+- Dashboard Analytics
+- Search & Filters
+- MediaTrack Wrapped
+
+---
+
+# 🤝 Contributors
+
+Developed as part of the
+
+**S-BDAT (Shakti-Based Database Application Training)**
+
+Mini Project using **ShaktiDB**.
+
+---
+
+# 📜 License
 
 This project is intended for educational and learning purposes.
 
@@ -121,8 +192,10 @@ This project is intended for educational and learning purposes.
 
 <div align="center">
 
-### 🎬 Every Story Leaves a Mark.
+# 🎬 Every Story Leaves a Mark.
 
-**Track Your Journey. Preserve Your Stories.**
+### *Track Your Journey. Preserve Your Stories.*
+
+Made with ❤️ using **ShaktiDB**, **Node.js**, **Express**, and **JavaScript**.
 
 </div>
