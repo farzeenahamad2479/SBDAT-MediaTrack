@@ -1,5 +1,6 @@
 const pool = require("../db");
 
+
 const signup = async (req, res) => {
     try {
 
@@ -9,6 +10,7 @@ const signup = async (req, res) => {
             email,
             password
         } = req.body;
+
 
         const query = `
             INSERT INTO users (full_name, username, email, password)
