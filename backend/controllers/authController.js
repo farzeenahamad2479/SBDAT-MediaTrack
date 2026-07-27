@@ -1,5 +1,5 @@
+const bcrypt = require("bcrypt");
 const pool = require("../db");
-
 
 const signup = async (req, res) => {
     try {
@@ -18,11 +18,13 @@ const signup = async (req, res) => {
             RETURNING id, full_name, username, email;
         `;
 
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         const values = [
             full_name,
             username,
             email,
-            password
+            hashedPassword
         ];
 
         const result = await pool.query(query, values);
@@ -91,7 +93,9 @@ const login = async (req, res) => {
 
         const user = result.rows[0];
 
-        if (user.password !== password) {
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
 
             return res.status(401).json({
                 success: false,
