@@ -516,3 +516,77 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   outline: 1px solid var(--text);
   outline-offset: 3px;
 }
+
+/* ============================================================
+   Shared Navigation
+   ============================================================ */
+
+.app-nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 60px;
+
+    background:#111;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.nav-brand img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
+
+.nav-brand span{
+    font-size:1.2rem;
+    font-weight:600;
+    color:#fff;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:32px;
+
+    list-style:none;
+}
+
+.nav-links a{
+    color:#cfcfcf;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.nav-avatar{
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#222;
+
+    color:white;
+
+    font-weight:600;
+
+}

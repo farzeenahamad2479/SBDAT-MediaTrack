@@ -1,4 +1,6 @@
+const watchlistRoutes = require("./routes/watchlistRoutes");
 const authRoutes = require("./routes/authRoutes");
+const mediaRoutes = require("./routes/mediaRoutes");
 const pool = require("./db");
 const express = require("express");
 const cors = require("cors");
@@ -11,6 +13,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/media", mediaRoutes);
+app.use("/api/watchlist", watchlistRoutes);
 
 // Home Route
 app.get("/", (req, res) => {
