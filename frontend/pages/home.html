@@ -11,28 +11,8 @@
 
 </head>
 
-<body class="home-body">
-
-  <!-- ============================================================
-       NAV
-       ============================================================ -->
-  <nav class="app-nav">
-    <div class="nav-brand">
-      <img src="../assets/logo.png" alt="MediaTrack">
-      <span>MediaTrack</span>
-    </div>
-
-    <ul class="nav-links">
-      <li><a href="home.html" class="is-active">Home</a></li>
-      <li><a href="#banners">Movies</a></li>
-      <li><a href="#banners">Series</a></li>
-      <li><a href="#banners">Anime</a></li>
-      <li><a href="calendar.html">Calendar</a></li>
-      <li><a href="#watchlist">Watchlist</a></li>
-    </ul>
-
-    <div class="nav-avatar" title="Your profile">U</div>
-  </nav>
+<body class="home-body" data-page="home">
+ 
 
   <!-- ============================================================
        WELCOME
@@ -79,7 +59,8 @@
        ============================================================ -->
   <section class="banners" id="banners">
 
-    <article class="banner">
+    <article class="banner"
+onclick="window.location.href='media.html?type=Movie'">
       <div class="banner-media">
         <img src="../assets/posters/dune.jpg" alt="Dune" loading="lazy" decoding="async">
       </div>
@@ -87,7 +68,8 @@
       <div class="banner-label"><span>Movies</span></div>
     </article>
 
-    <article class="banner">
+    <article class="banner"
+onclick="window.location.href='media.html?type=Series'">
       <div class="banner-media">
         <img src="../assets/posters/breaking-bad.jpg" alt="Breaking Bad" loading="lazy" decoding="async">
       </div>
@@ -95,7 +77,8 @@
       <div class="banner-label"><span>Series</span></div>
     </article>
 
-    <article class="banner">
+    <article class="banner"
+onclick="window.location.href='media.html?type=Anime'">
       <div class="banner-media">
         <img src="../assets/posters/one-piece.jpg" alt="One Piece" loading="lazy" decoding="async">
       </div>
@@ -103,7 +86,8 @@
       <div class="banner-label"><span>Anime</span></div>
     </article>
 
-    <article class="banner">
+    <article class="banner"
+onclick="window.location.href='media.html?type=Mini Series'">
       <div class="banner-media">
         <img src="../assets/posters/chernobyl.jpg" alt="Chernobyl" loading="lazy" decoding="async">
       </div>
@@ -314,7 +298,8 @@
     MediaTrack — Every Story Leaves a Mark.
   </footer>
 
-  <script src="../js/home.js"></script>
+  <script src="../js/navbar.js"></script>
+<script src="../js/home.js"></script>
 
 </body>
 </html>
