@@ -6,6 +6,8 @@ MediaTrack is a personal entertainment tracking platform that helps users organi
 
 Built as part of the **S-BDAT (Shakti-Based Database Application Training)** Mini Project, MediaTrack combines a cinematic user experience with the power of **ShaktiDB** to create a modern, database-driven media archive.
 
+🚧 Active development happens in the dev branch. The main branch contains the latest stable version.
+
 ---
 
 ## ✨ Current Features
