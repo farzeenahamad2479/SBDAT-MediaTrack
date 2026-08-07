@@ -37,6 +37,11 @@ const navbar = `
                 Anime
             </a>
         </li>
+        <li>
+    <a href="media.html?type=Mini Series">
+        Mini Series
+    </a>
+</li>
 
         <li>
             <a href="media.html?type=Book">

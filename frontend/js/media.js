@@ -8,9 +8,23 @@ const params = new URLSearchParams(window.location.search);
 const type = params.get("type") || "Movie";
 
 // Update page title
-pageTitle.textContent = type + "s";
-pageSubtitle.textContent = `Explore ${type.toLowerCase()}s in your archive.`;
+const titles = {
 
+    "Movie": "Movies",
+
+    "Series": "Series",
+
+    "Anime": "Anime",
+
+    "Mini Series": "Mini Series",
+
+    "Book": "Books"
+
+};
+
+pageTitle.textContent = titles[type] || type;
+pageSubtitle.textContent =
+    `Explore ${pageTitle.textContent.toLowerCase()} in your archive.`;
 // Fetch media
 fetch(`http://localhost:5000/api/media/type/${encodeURIComponent(type)}`)
     .then(res => res.json())

@@ -3,8 +3,7 @@
    Monochrome. No gradients. No neon. No red.
    =================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap");
 :root{
   /* palette */
   --bg:        #0D0D0D;
@@ -44,6 +43,34 @@ body{
   min-height:100vh;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
+}
+
+/* ==========================================================
+   GLOBAL TYPOGRAPHY
+========================================================== */
+
+body{
+    font-family: var(--f-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: var(--f-display);
+    font-weight: 600;
+}
+
+p,
+span,
+a,
+button,
+input,
+textarea,
+label{
+    font-family: var(--f-body);
 }
 
 ::selection{ background: var(--accent); color:#000; }
@@ -588,5 +615,42 @@ a:focus-visible, button:focus-visible, input:focus-visible{
     color:white;
 
     font-weight:600;
+
+}
+
+
+/* ==========================================================
+   PAGE LAYOUT
+========================================================== */
+
+.page-container{
+
+    width:min(1400px,92%);
+
+    margin:0 auto;
+
+}
+
+.page-header{
+
+    padding:70px 0 35px;
+
+}
+
+.page-header h1{
+
+    font-size:3.3rem;
+
+    font-family:var(--f-display);
+
+    margin-bottom:10px;
+
+}
+
+.page-header p{
+
+    color:var(--text-dim);
+
+    font-size:1rem;
 
 }
